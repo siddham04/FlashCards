@@ -1,6 +1,9 @@
+https://sidflashcards04.netlify.app/
+
 # Hindi Flashcards App
 
 A modern, interactive web application for learning Hindi vocabulary using flashcards. Built with React, TypeScript, Vite, and Tailwind CSS.
+
 
 ## Features
 
