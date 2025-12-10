@@ -9,7 +9,7 @@ interface FlipableCardProps {
 export default function FlipableCard({ card, flipped, onFlip }: FlipableCardProps) {
   return (
     <div
-      className="w-96 h-64 mx-auto cursor-pointer perspective-1000"
+      className="w-full max-w-sm sm:max-w-md md:w-96 h-56 sm:h-64 mx-auto cursor-pointer perspective-1000"
       onClick={onFlip}
       role="button"
       tabIndex={0}
@@ -38,10 +38,10 @@ export default function FlipableCard({ card, flipped, onFlip }: FlipableCardProp
             WebkitBackfaceVisibility: 'hidden',
           }}
         >
-          <div className="text-center p-6">
-            <p className="text-sm text-blue-200 mb-2">Hindi</p>
-            <h2 className="text-4xl font-bold">{card.hindi}</h2>
-            <p className="text-sm text-blue-200 mt-4">Click to flip</p>
+          <div className="text-center p-4 sm:p-6">
+            <p className="text-xs sm:text-sm text-blue-200 mb-2">Hindi</p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">{card.hindi}</h2>
+            <p className="text-xs sm:text-sm text-blue-200 mt-3 sm:mt-4">Click to flip</p>
           </div>
         </div>
 
@@ -54,10 +54,10 @@ export default function FlipableCard({ card, flipped, onFlip }: FlipableCardProp
             transform: 'rotateY(180deg)',
           }}
         >
-          <div className="text-center p-6">
-            <p className="text-sm text-green-200 mb-2">English</p>
-            <h2 className="text-4xl font-bold">{card.english}</h2>
-            <p className="text-sm text-green-200 mt-4">Click to flip back</p>
+          <div className="text-center p-4 sm:p-6">
+            <p className="text-xs sm:text-sm text-green-200 mb-2">English</p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">{card.english}</h2>
+            <p className="text-xs sm:text-sm text-green-200 mt-3 sm:mt-4">Click to flip back</p>
           </div>
         </div>
       </div>

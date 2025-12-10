@@ -75,32 +75,32 @@ export default function StudyPage() {
 
   if (isFinished) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-100 to-blue-100 p-8 flex items-center justify-center">
-        <div className="bg-white rounded-xl shadow-lg p-8 max-w-md w-full text-center">
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">
+      <div className="min-h-screen bg-gradient-to-br from-purple-100 to-blue-100 p-4 sm:p-6 md:p-8 flex items-center justify-center">
+        <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8 max-w-md w-full text-center mx-4">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">
             🎉 Study Session Complete!
           </h2>
-          <p className="text-gray-600 mb-6">
+          <p className="text-sm sm:text-base text-gray-600 mb-6">
             You've finished all {shuffledCards.length} cards in the {deck.title} deck.
           </p>
           {wrongIds.size > 0 && (
-            <p className="text-red-600 mb-6 font-semibold">
+            <p className="text-red-600 mb-6 font-semibold text-sm sm:text-base">
               Cards to review: {wrongIds.size}
             </p>
           )}
-          <div className="flex flex-col gap-4 items-center">
+          <div className="flex flex-col gap-3 sm:gap-4 items-center">
             {wrongIds.size > 0 && (
               <button
                 onClick={() => navigate('/redo')}
-                className="bg-purple-500 hover:bg-purple-600 text-white font-bold py-3 px-6 rounded-lg transition-colors"
+                className="bg-purple-500 hover:bg-purple-600 text-white font-bold py-3 px-6 rounded-lg transition-colors w-full sm:w-auto min-h-[44px] text-sm sm:text-base"
               >
                 🔄 Redo Wrong Cards ({wrongIds.size})
               </button>
             )}
-            <div className="flex gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center w-full sm:w-auto">
               <button
                 onClick={() => navigate('/')}
-                className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-colors"
+                className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-colors min-h-[44px] text-sm sm:text-base"
               >
                 Back to Home
               </button>
@@ -110,7 +110,7 @@ export default function StudyPage() {
                   setCurrentIndex(0);
                   setFlipped(false);
                 }}
-                className="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-colors"
+                className="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-colors min-h-[44px] text-sm sm:text-base"
               >
                 Study Again
               </button>
@@ -132,27 +132,29 @@ export default function StudyPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-100 to-blue-100 p-8 page-transition">
+    <div className="min-h-screen bg-gradient-to-br from-purple-100 to-blue-100 p-4 sm:p-6 md:p-8 page-transition">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
-        <div className="mb-6 flex items-center justify-between">
+        <div className="mb-4 sm:mb-6 flex items-center justify-between gap-2">
           <button
             onClick={() => navigate('/')}
-            className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition-colors"
+            className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-3 sm:px-4 rounded-lg transition-colors text-sm sm:text-base min-h-[44px]"
           >
             ← Back
           </button>
-          <div className="text-center">
-            <h2 className="text-2xl font-bold text-gray-800">{deck.title}</h2>
-            <p className="text-gray-600">
+          <div className="text-center flex-1">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800">{deck.title}</h2>
+            <p className="text-sm sm:text-base text-gray-600">
               Card {currentIndex + 1} of {shuffledCards.length}
             </p>
           </div>
-          <div className="w-20"></div> {/* Spacer for centering */}
+          <div className="w-16 sm:w-20"></div> {/* Spacer for centering */}
         </div>
 
         {/* Card */}
-        <FlipableCard card={currentCard} flipped={flipped} onFlip={handleFlip} />
+        <div className="mb-4 sm:mb-6">
+          <FlipableCard card={currentCard} flipped={flipped} onFlip={handleFlip} />
+        </div>
 
         {/* Right/Wrong buttons - only show after flipping */}
         {flipped && (
@@ -161,7 +163,7 @@ export default function StudyPage() {
 
         {/* Hint if not flipped */}
         {!flipped && (
-          <p className="text-center text-gray-500 mt-4">
+          <p className="text-center text-gray-500 mt-4 text-sm sm:text-base px-4">
             Click the card to reveal the answer
           </p>
         )}

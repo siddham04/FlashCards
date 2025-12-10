@@ -78,18 +78,18 @@ export default function RedoPage() {
 
   if (isFinished) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-100 to-blue-100 p-8 flex items-center justify-center">
-        <div className="bg-white rounded-xl shadow-lg p-8 max-w-md w-full text-center">
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">
+      <div className="min-h-screen bg-gradient-to-br from-purple-100 to-blue-100 p-4 sm:p-6 md:p-8 flex items-center justify-center">
+        <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8 max-w-md w-full text-center mx-4">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">
             🎉 Redo Session Complete!
           </h2>
-          <p className="text-gray-600 mb-6">
+          <p className="text-sm sm:text-base text-gray-600 mb-6">
             You've reviewed all {shuffledCards.length} cards you got wrong.
           </p>
-          <div className="flex gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <button
               onClick={() => navigate('/')}
-              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-colors"
+              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-colors min-h-[44px] text-sm sm:text-base"
             >
               Back to Home
             </button>
@@ -99,7 +99,7 @@ export default function RedoPage() {
                 setCurrentIndex(0);
                 setFlipped(false);
               }}
-              className="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-colors"
+              className="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-colors min-h-[44px] text-sm sm:text-base"
             >
               Redo Again
             </button>
@@ -108,7 +108,7 @@ export default function RedoPage() {
                 clearWrongCards();
                 navigate('/');
               }}
-              className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg transition-colors"
+              className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg transition-colors min-h-[44px] text-sm sm:text-base"
             >
               Clear Wrong Cards
             </button>
@@ -120,36 +120,38 @@ export default function RedoPage() {
 
   if (!currentCard) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-100 to-blue-100 p-8 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-purple-100 to-blue-100 p-4 sm:p-6 md:p-8 flex items-center justify-center">
         <div className="text-center">
-          <p className="text-xl text-gray-600">Loading...</p>
+          <p className="text-lg sm:text-xl text-gray-600">Loading...</p>
         </div>
       </div>
     );
   }
 
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-100 to-blue-100 p-8 page-transition">
+      <div className="min-h-screen bg-gradient-to-br from-purple-100 to-blue-100 p-4 sm:p-6 md:p-8 page-transition">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
-        <div className="mb-6 flex items-center justify-between">
+        <div className="mb-4 sm:mb-6 flex items-center justify-between gap-2">
           <button
             onClick={() => navigate('/')}
-            className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition-colors"
+            className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-3 sm:px-4 rounded-lg transition-colors text-sm sm:text-base min-h-[44px]"
           >
             ← Back
           </button>
-          <div className="text-center">
-            <h2 className="text-2xl font-bold text-gray-800">Redo Wrong Cards</h2>
-            <p className="text-gray-600">
+          <div className="text-center flex-1">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800">Redo Wrong Cards</h2>
+            <p className="text-sm sm:text-base text-gray-600">
               Card {currentIndex + 1} of {shuffledCards.length}
             </p>
           </div>
-          <div className="w-20"></div> {/* Spacer for centering */}
+          <div className="w-16 sm:w-20"></div> {/* Spacer for centering */}
         </div>
 
         {/* Card */}
-        <FlipableCard card={currentCard} flipped={flipped} onFlip={handleFlip} />
+        <div className="mb-4 sm:mb-6">
+          <FlipableCard card={currentCard} flipped={flipped} onFlip={handleFlip} />
+        </div>
 
         {/* Right/Wrong buttons - only show after flipping */}
         {flipped && (
@@ -158,7 +160,7 @@ export default function RedoPage() {
 
         {/* Hint if not flipped */}
         {!flipped && (
-          <p className="text-center text-gray-500 mt-4">
+          <p className="text-center text-gray-500 mt-4 text-sm sm:text-base px-4">
             Click the card to reveal the answer
           </p>
         )}
